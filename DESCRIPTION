@@ -2,10 +2,11 @@ Package: cvar
 Type: Package
 Title: Compute Expected Shortfall and Value at Risk for Continuous
         Distributions
-Version: 0.1-1
-Date: 2018-04-09
-Author: Georgi N. Boshnakov
-Maintainer: Georgi N. Boshnakov <georgi.boshnakov@manchester.ac.uk>
+Version: 0.2-0
+Date: 2018-08-19
+Authors@R: person(given = c("Georgi", "N."), family = "Boshnakov",
+                  role = c("aut", "cre"), 
+                  email = "georgi.boshnakov@manchester.ac.uk")
 Description: Compute expected shortfall (ES) and Value at Risk (VaR) from a
     quantile function, distribution function, random number generator or
     probability density function.  ES is also known as Conditional Value at
@@ -15,13 +16,15 @@ Description: Compute expected shortfall (ES) and Value at Risk (VaR) from a
     <doi:10.1111/1468-0300.00091>.
 URL: https://github.com/GeoBosh/cvar
 BugReports: https://github.com/GeoBosh/cvar/issues
-Imports: stats, utils, gbutils, Rdpack (>= 0.7)
+Imports: gbutils, Rdpack (>= 0.8)
 RdMacros: Rdpack
 License: GPL (>= 2)
 Collate: VaR.R cvar-package.R
-RoxygenNote: 6.0.1
-Suggests: testthat, PerformanceAnalytics
+RoxygenNote: 6.1.0
+Suggests: testthat, PerformanceAnalytics, covr
 NeedsCompilation: no
-Packaged: 2018-04-09 15:20:25 UTC; mcbssgb2
+Packaged: 2018-08-19 16:36:19 UTC; mcbssgb2
+Author: Georgi N. Boshnakov [aut, cre]
+Maintainer: Georgi N. Boshnakov <georgi.boshnakov@manchester.ac.uk>
 Repository: CRAN
-Date/Publication: 2018-04-09 16:01:48 UTC
+Date/Publication: 2018-08-19 16:50:03 UTC

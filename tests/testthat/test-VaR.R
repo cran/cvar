@@ -11,6 +11,9 @@ res1 <- cvar::VaR(qnorm, x = 0.05, mean = muA, sd = sqrt(sigma2A))
 res2 <- cvar::VaR(qnorm, x = 0.05, intercept = muA, slope = sqrt(sigma2A))
 abs((res2 - res1)) # 0, intercept/slope equivalent to mean/sd
 
+expect_error(cvar::VaR(dnorm, dist.type = "pdf", x = 0.05, intercept = muA, slope = sqrt(sigma2A)), "Not ready")
+cvar::VaR_qf(qnorm, x = 0.05, mean = muA, sd = sqrt(sigma2A))
+
 ## with cdf the precision depends on solving an equation
 res1a <- cvar::VaR(pnorm, x = 0.05, dist.type = "cdf", mean = muA, sd = sqrt(sigma2A))
 res2a <- cvar::VaR(pnorm, x = 0.05, dist.type = "cdf", intercept = muA, slope = sqrt(sigma2A))
@@ -68,3 +71,32 @@ if(require("PerformanceAnalytics")){
 }
 
 })
+
+test_that("ES works ok", {
+ES(qnorm)
+
+## Gaussian
+ES(qnorm, dist.type = "qf")
+ES(pnorm, dist.type = "cdf")
+
+## t-dist
+ES(qt, dist.type = "qf", df = 4)
+ES(pt, dist.type = "cdf", df = 4)
+
+ES(pnorm, x= 0.95, dist.type = "cdf")
+ES(qnorm, x= 0.95, dist.type = "qf")
+## - VaRES::esnormal(0.95, 0, 1)
+## - PerformanceAnalytics::ETL(p=0.05, method = "gaussian", mu = 0,
+##                             sigma = 1, weights = 1)             # same
+
+cvar::ES(pnorm, dist.type = "cdf")
+cvar::ES(qnorm, dist.type = "qf")
+cvar::ES(pnorm, x= 0.05, dist.type = "cdf")
+cvar::ES(qnorm, x= 0.05, dist.type = "qf")
+
+## this uses "pdf"
+cvar::ES(dnorm, x = 0.05, dist.type = "pdf", qf = qnorm)
+
+
+})
+

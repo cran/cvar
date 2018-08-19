@@ -1,3 +1,14 @@
+
+
+# cvar
+
+[![CRANStatusBadge](http://www.r-pkg.org/badges/version/cvar)](https://cran.r-project.org/package=cvar)
+[![Build Status](https://travis-ci.com/GeoBosh/cvar.svg?branch=master)](https://travis-ci.com/GeoBosh/cvar)
+[![Coverage Status](https://coveralls.io/repos/github/GeoBosh/cvar/badge.svg?branch=master)](https://coveralls.io/github/GeoBosh/cvar?branch=master)
+
+
+## Overview
+
 Compute expected shortfall (ES) and Value at Risk (VaR) from a
 quantile function, distribution function, random number generator or
 probability density function.  ES is also known as Conditional Value
@@ -7,7 +18,16 @@ The computations are done directly from the definitions, see e.g. Acerbi
 and Tasche (2002).
 
 
-# Installing cvar
+## Installing cvar
+
+The [latest stable version](https://cran.r-project.org/package=cvar) is on CRAN. 
+
+    install_packages("cvar")
+
+The vignette shipping with the package gives illustrative examples.
+`vignette("Guide_cvar", package = "cvar")`.
+(Due to a mixed-up index entry, it appears to have a puzzling title on the [CRAN cvar page](https://cran.r-project.org/package=cvar),
+but clicking on it brings up the correct vignette.)
 
 You can install the [development version](https://github.com/GeoBosh/cvar) of `cvar` from Github:
 
@@ -15,7 +35,7 @@ You can install the [development version](https://github.com/GeoBosh/cvar) of `c
     install_github("GeoBosh/cvar")
 
 
-# Overview
+## Overview
 
 Package `cvar` is a small `R` package with, essentially two
 functions &#x2014; `ES` for computing the expected shortfall
