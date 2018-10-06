@@ -1,3 +1,18 @@
+# cvar 0.3-0 (CRAN)
+
+# cvar 0.2-1
+
+* now `\VignetteIndexEntry` in `Guide_cvar.Rnw` is plain text.
+
+* added experimental support for GARCH models - currently GARCH(1,1) (the API
+  may change).
+
+* now the first argument of `VaR()` and `ES()` can be a numeric vector. This is
+  useful, e.g., for computing VaR by simulation.
+
+* bugfix:  in `VaR_cdf()` and `VaR_qf()`,  the code for the `if/else` clauses
+  had been wrongly swappped. 
+
 # cvar 0.2-0 (CRAN)
 
 * prepare for CRAN

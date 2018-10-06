@@ -1,7 +1,10 @@
 #' @author Georgi N. Boshnakov
 #'
+#' @importFrom stats quantile runif
 #' @importFrom gbutils cdf2quantile
 #' @importFrom Rdpack reprompt
+#'
+#' @importFrom fGarch dstd pstd qstd rstd dged pged qged rged
 #'
 #' @docType package
 #' @name cvar-package
@@ -9,12 +12,12 @@
 #'
 #' @title Compute Conditional Value-at-Risk and Value-at-Risk
 #'
-#' @description Compute expected shortfall (ES) and Value at Risk
-#'     (VaR) from a quantile function, distribution function, random
-#'     number generator or probability density function.  ES is also
-#'     known as Conditional Value at Risk (CVaR). Virtually any
-#'     continuous distribution can be specified.  The functions are
-#'     vectorised over the arguments.
+#' @description Compute expected shortfall (ES) and Value at Risk (VaR)
+#'     from a quantile function, distribution function, random number
+#'     generator or probability density function.  ES is also known as
+#'     Conditional Value at Risk (CVaR). Virtually any continuous
+#'     distribution can be specified.  The functions are vectorised over
+#'     the arguments. Some support for GARCH models is provided, as well.
 #'
 #' @details
 #'
@@ -30,7 +33,7 @@
 #'     covering comprehensively various aspects of risk measurement,
 #'     including some functions for expected shortfall.
 #'
-#'     Package \pkg{cvar} is a small package with, essentially two
+#'     Package \pkg{cvar} is a small package with, essentially, two main
 #'     functions --- \code{ES} for computing the expected shortfall
 #'     and \code{VaR} for Value at Risk.  The user specifies the
 #'     distribution by supplying one of the functions that define a
@@ -66,14 +69,28 @@
 #'     distribution are convenience functions. \code{VaR} exported by
 #'     \pkg{cvar} could be attractive in certain workflows because of
 #'     its vectorised distribution parameters, the location-scale
-#'     transformation and the possibility to compute it from cdf's
+#'     transformation, and the possibility to compute it from cdf's
 #'     when quantile functions are not available.
+#'
+#'     Some support for GARCH models is provided, as well. It is
+#'     currently under development, see \code{\link{predict.garch1c1}}
+#'     for current functionality.
 #'
 #' @references
 #'     \insertAllCited{}
 #'
+#' ---
+#'
+#' This is for pkgdown test. The following two phrases should be in separate paragraphs:
+#'
+#' \Sexpr[stage=build,results=rd]{paste0(c("First phrase.", "Second phrase."), collapse = "\n\n")}
+#'
+#' ---
+#'
+#' \Sexpr[stage=build,results=rd]{paste0("First phrase.\n\nSecond phrase.")}
+#'
 #' @examples
-#' ## see the examples in \code{\link{ES}} and \code{\link{VaR}}
+#' ## see the examples for ES(), VaR(), predict.garch1c1()
 #'
 NULL
 

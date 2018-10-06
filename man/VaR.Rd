@@ -5,6 +5,7 @@
 \alias{VaR_qf}
 \alias{VaR_cdf}
 \alias{VaR.default}
+\alias{VaR.numeric}
 \title{Compute Value-at-Risk (VaR) of distributions}
 \usage{
 VaR(dist, x = 0.05, dist.type = "qf", ..., intercept = 0,
@@ -18,6 +19,8 @@ VaR_cdf(dist, x = 0.05, ..., intercept = 0, slope = 1,
 
 \method{VaR}{default}(dist, x = 0.05, dist.type = "qf", ...,
   intercept = 0, slope = 1, tol = .Machine$double.eps^0.5)
+
+\method{VaR}{numeric}(dist, x = 0.05, ..., intercept = 0, slope = 1)
 }
 \arguments{
 \item{dist}{specifies the distribution whose ES is computed, usually a function or a name
@@ -43,6 +46,14 @@ slope*X}, where \code{X} has distribution specified by \code{dist}, see Details.
 \code{Var} computes the Value-at-Risk of the distribution specified by the
     arguments. The meaning of the parameters is the same as in \code{\link{ES}}, including
     the recycling rules.
+}
+\details{
+\code{VaR} is S3 generic. The meaning of the parameters for its default method is the
+    same as in \code{\link{ES}}, including the recycling rules.
+
+    \code{VaR_qf} and \code{VaR_cdf} are streamlined, non-generic, variants for the common
+    case when the \code{"..."} parameters are scalar. The parameters \code{x},
+    \code{intercept}, and \code{slope} can be vectors, as for \code{VaR}.
 }
 \note{
 We use the traditional definition of VaR as the negated lower quantile. For example,
@@ -83,7 +94,7 @@ abs((res2b - res2)/res2) # 3.91785e-15
 
 
 ## an extended example with vector args, if "PerformanceAnalytics" is present
-if(require("PerformanceAnalytics")){
+if (requireNamespace("PerformanceAnalytics", quietly = TRUE)) withAutoprint({
     data(edhec, package = "PerformanceAnalytics")
     mu <- apply(edhec, 2, mean)
     sigma2 <- apply(edhec, 2, var)
@@ -118,6 +129,6 @@ if(require("PerformanceAnalytics")){
 
     max(abs((vPA - vAz1b))) # 4.374869e-13
     max(abs((vPA - vAz2b))) # 3.330669e-16
-}
+})
 
 }
