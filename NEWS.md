@@ -1,3 +1,12 @@
+# cvar 0.4-0 (CRAN)
+
+# cvar 0.3-1
+
+* fix tests to pass with the changed R random generator.
+
+* some new examples and minor documentation changes.
+
+
 # cvar 0.3-0 (CRAN)
 
 # cvar 0.2-1
@@ -12,6 +21,7 @@
 
 * bugfix:  in `VaR_cdf()` and `VaR_qf()`,  the code for the `if/else` clauses
   had been wrongly swappped. 
+
 
 # cvar 0.2-0 (CRAN)
 
