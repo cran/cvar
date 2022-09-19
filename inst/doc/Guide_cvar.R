@@ -22,22 +22,27 @@ cvar::VaR(qnorm, x = c(0.01, 0.05))
 
 
 ###################################################
-### code chunk number 4: Guide_cvar.Rnw:217-219
+### code chunk number 4: Guide_cvar.Rnw:220-222
 ###################################################
 muA <- 0.006408553
 sigma2A <- 0.0004018977
 
 
 ###################################################
-### code chunk number 5: Guide_cvar.Rnw:225-228
+### code chunk number 5: Guide_cvar.Rnw:225-226
 ###################################################
 res1 <- cvar::VaR(qnorm, x = 0.05, mean = muA, sd = sqrt(sigma2A))
+
+
+###################################################
+### code chunk number 6: Guide_cvar.Rnw:231-233
+###################################################
 res2 <- cvar::VaR(qnorm, x = 0.05, intercept = muA, slope = sqrt(sigma2A))
 abs((res2 - res1)) # 0, intercept/slope equivalent to mean/sd
 
 
 ###################################################
-### code chunk number 6: Guide_cvar.Rnw:232-239
+### code chunk number 7: Guide_cvar.Rnw:237-244
 ###################################################
 ## with cdf the precision depends on solving an equation
 res1a <- cvar::VaR(pnorm, x = 0.05, dist.type = "cdf",
@@ -49,7 +54,7 @@ abs((res2a - res2)) # 5.331195e-11, intercept/slope better numerically
 
 
 ###################################################
-### code chunk number 7: Guide_cvar.Rnw:244-251
+### code chunk number 8: Guide_cvar.Rnw:250-257
 ###################################################
 ## as above, but increase the precision, this is probably excessive
 res1b <- cvar::VaR(pnorm, x = 0.05, dist.type = "cdf",
@@ -61,14 +66,14 @@ abs((res2b - res2)) # 1.040834e-16
 
 
 ###################################################
-### code chunk number 8: Guide_cvar.Rnw:255-257
+### code chunk number 9: Guide_cvar.Rnw:261-263
 ###################################################
 abs((res1b - res2)/res2) # 2.6119e-16 # both within machine precision
 abs((res2b - res2)/res2) # 3.91785e-15
 
 
 ###################################################
-### code chunk number 9: Guide_cvar.Rnw:264-269
+### code chunk number 10: Guide_cvar.Rnw:272-277
 ###################################################
 ## if(require("PerformanceAnalytics")){
 data(edhec, package = "PerformanceAnalytics")
@@ -78,7 +83,7 @@ musigma2 <- cbind(mu, sigma2)
 
 
 ###################################################
-### code chunk number 10: Guide_cvar.Rnw:273-277
+### code chunk number 11: Guide_cvar.Rnw:281-285
 ###################################################
 ## analogous calc. with PerformanceAnalytics::VaR
 vPA <- apply(musigma2, 1, function(x)
@@ -87,7 +92,7 @@ vPA <- apply(musigma2, 1, function(x)
 
 
 ###################################################
-### code chunk number 11: Guide_cvar.Rnw:283-287
+### code chunk number 12: Guide_cvar.Rnw:291-295
 ###################################################
 vAz1 <- cvar::VaR(qnorm, x = 0.05, mean = mu, sd = sqrt(sigma2))
 vAz2 <- cvar::VaR(qnorm, x = 0.05, intercept = mu, slope = sqrt(sigma2))
@@ -96,7 +101,7 @@ max(abs((vPA - vAz2))) #   ""
 
 
 ###################################################
-### code chunk number 12: Guide_cvar.Rnw:291-297
+### code chunk number 13: Guide_cvar.Rnw:299-305
 ###################################################
 vAz1a <- cvar::VaR(pnorm, x = 0.05, dist.type = "cdf",
                    mean = mu, sd = sqrt(sigma2))
@@ -107,7 +112,7 @@ max(abs((vPA - vAz2a))) #  1.465251e-10, intercept/slope better
 
 
 ###################################################
-### code chunk number 13: Guide_cvar.Rnw:301-309
+### code chunk number 14: Guide_cvar.Rnw:309-317
 ###################################################
 vAz1b <- cvar::VaR(pnorm, x = 0.05, dist.type = "cdf",
                    mean = mu, sd = sqrt(sigma2),
@@ -120,7 +125,7 @@ max(abs((vPA - vAz2b))) # 3.330669e-16
 
 
 ###################################################
-### code chunk number 14: Guide_cvar.Rnw:321-324
+### code chunk number 15: Guide_cvar.Rnw:329-332
 ###################################################
 cvar::ES(qnorm, x = 0.05, dist.type = "qf")
 cvar::ES(qnorm, x = 0.05)
@@ -128,20 +133,20 @@ cvar::ES(qnorm)
 
 
 ###################################################
-### code chunk number 15: Guide_cvar.Rnw:328-329
+### code chunk number 16: Guide_cvar.Rnw:336-337
 ###################################################
 cvar::ES(qnorm, x = c(0.01, 0.05))
 
 
 ###################################################
-### code chunk number 16: Guide_cvar.Rnw:333-335
+### code chunk number 17: Guide_cvar.Rnw:341-343
 ###################################################
 muA <- 0.006408553
 sigma2A <- 0.0004018977
 
 
 ###################################################
-### code chunk number 17: Guide_cvar.Rnw:341-344
+### code chunk number 18: Guide_cvar.Rnw:349-352
 ###################################################
 res1 <- cvar::ES(qnorm, x = 0.05, mean = muA, sd = sqrt(sigma2A))
 res2 <- cvar::ES(qnorm, x = 0.05, intercept = muA, slope = sqrt(sigma2A))
@@ -149,7 +154,7 @@ abs((res2 - res1))
 
 
 ###################################################
-### code chunk number 18: Guide_cvar.Rnw:348-355
+### code chunk number 19: Guide_cvar.Rnw:356-363
 ###################################################
 ## with cdf the precision depends on solving an equation
 res1a <- cvar::ES(pnorm, x = 0.05, dist.type = "cdf",
@@ -161,7 +166,7 @@ abs((res2a - res2)) # intercept/slope better numerically
 
 
 ###################################################
-### code chunk number 19: Guide_cvar.Rnw:360-367
+### code chunk number 20: Guide_cvar.Rnw:368-375
 ###################################################
 ## as above, but increase the precision, this is probably excessive
 res1b <- cvar::ES(pnorm, x = 0.05, dist.type = "cdf",
@@ -173,7 +178,7 @@ abs((res2b - res2))
 
 
 ###################################################
-### code chunk number 20: Guide_cvar.Rnw:371-373
+### code chunk number 21: Guide_cvar.Rnw:379-381
 ###################################################
 abs((res1b - res2)/res2)
 abs((res2b - res2)/res2)

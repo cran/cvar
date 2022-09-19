@@ -1,6 +1,19 @@
-# cvar 0.4-0 (CRAN)
+# cvar 0.4.1
 
-# cvar 0.3-1
+* when the input was numeric, `ES()` was not handling the level `x` properly
+  (fixes issue #2, reported by Marius Bommert).
+
+* changed the JSS reference to use the new-style doi.
+
+* fixed a bug in the tests, in v0.4-0, that was causing faiure of the tests on
+  travis, despite all checks on CRAN passing with OK. `devtools::test()` was
+  failing too, but only on the first run in a session, details in the git
+  commit.
+
+* set up GHA.
+
+
+# cvar 0.4-0 (CRAN)
 
 * fix tests to pass with the changed R random generator.
 
@@ -8,8 +21,6 @@
 
 
 # cvar 0.3-0 (CRAN)
-
-# cvar 0.2-1
 
 * now `\VignetteIndexEntry` in `Guide_cvar.Rnw` is plain text.
 
@@ -25,17 +36,11 @@
 
 # cvar 0.2-0 (CRAN)
 
-* prepare for CRAN
-
-# cvar 0.1-3
-
 * suggest 'covr'.
 
 * setup for travisCI and Coveralls.
 
 * more tests.
-
-# cvar 0.1-2
 
 * corrected \VignetteIndexEntry in the vignette --- I used the vignette for Rdpack as a
   template but didn't change this entry, which resulted in the vignette appearing with a
@@ -44,6 +49,7 @@
 * added author@R in DESCRIPTION.
 
 * added experimental web site (docs/)
+
 
 # cvar 0.1-1 (CRAN)
 

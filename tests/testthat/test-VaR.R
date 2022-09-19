@@ -23,13 +23,14 @@ abs((res2a - res2)) # 5.331195e-11, intercept/slope better numerically
 expect_equal(res1, VaR_qf(qnorm, x = 0.05, mean = muA, sd = sqrt(sigma2A)))
 expect_equal(res2a, VaR_cdf(pnorm, x = 0.05, mean = muA, sd = sqrt(sigma2A)))
 
-suppressWarnings(RNGversion("3.5.0")) # 2019-03-13 temporary, RNG changed in R-devel.
-                                      #            see email from Kurt Hornik in Org/
+ 
 set.seed(1236)
 a.num <- rnorm(100)
 VaR(a.num)
-ES(a.num)
 
+## test the fix for issue #2
+expect_true(ES(a.num) == ES(a.num, x = 0.05))
+expect_true(ES(a.num) != ES(a.num, x = 0.01))
 
 ## as above, but increase the precision, this is probably excessive
 res1b <- cvar::VaR(pnorm, x = 0.05, dist.type = "cdf", mean = muA, sd = sqrt(sigma2A), tol = .Machine$double.eps^0.75)
@@ -108,5 +109,12 @@ expect_equal(ES(pnorm, x = 0.95, dist.type = "cdf"),
 expect_equal(ES(dnorm, x = 0.05, dist.type = "pdf", qf = qnorm),
              ES(pnorm, x = 0.05, dist.type = "cdf") )
 
+## several in one call
+ES(pnorm, x = c(0.1, 0.05, 0.01), dist.type = "cdf")
+ES(dnorm, x = c(0.1, 0.05, 0.01), dist.type = "pdf", qf = qnorm)
+ES(dnorm, x = 0.05, dist.type = "pdf", qf = qnorm)
+ES(dnorm, x = c(0.1, 0.05, 0.01), dist.type = "pdf", qf = qnorm)
+ES(dnorm, x = c(0.1, 0.05, 0.01), dist.type = "pdf", qf = list(qnorm, qnorm, qnorm))
+ES(dnorm, x = c(0.1, 0.05, 0.01), dist.type = "pdf", qf = c(qnorm, qnorm, qnorm))
 })
 

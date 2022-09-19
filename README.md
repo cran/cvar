@@ -3,10 +3,11 @@
 # cvar
 
 [![CRANStatusBadge](https://www.r-pkg.org/badges/version/cvar)](https://cran.r-project.org/package=cvar)
-[![Build Status](https://travis-ci.com/GeoBosh/cvar.svg?branch=master)](https://travis-ci.com/GeoBosh/cvar)
-[![Coverage Status](https://coveralls.io/repos/github/GeoBosh/cvar/badge.svg?branch=master)](https://coveralls.io/github/GeoBosh/cvar?branch=master)
+[![R-CMD-check](https://github.com/GeoBosh/cvar/workflows/R-CMD-check/badge.svg)](https://github.com/GeoBosh/cvar/actions)
+[![codecov](https://codecov.io/gh/GeoBosh/cvar/branch/master/graph/badge.svg?token=2SW9HKG71Y)](https://app.codecov.io/gh/GeoBosh/cvar)
 
-
+ 
+ 
 ## Overview
 
 Compute expected shortfall (ES) and Value at Risk (VaR) from a
@@ -22,10 +23,12 @@ and Tasche (2002). Some support for GARCH models is provided, as well.
 
 The [latest stable version](https://cran.r-project.org/package=cvar) is on CRAN. 
 
-    install_packages("cvar")
+    install.packages("cvar")
 
-The vignette shipping with the package gives illustrative examples
-(`vignette("Guide_cvar", package = "cvar")`).
+The vignette
+[Guide_cvar]( https://CRAN.R-project.org/package=cvar/vignettes/Guide_cvar.pdf) shipping
+with the package gives illustrative examples (can also be opened from R with
+`vignette("Guide_cvar", package = "cvar")`).
 
 You can install the [development version](https://github.com/GeoBosh/cvar) of `cvar` from Github:
 
